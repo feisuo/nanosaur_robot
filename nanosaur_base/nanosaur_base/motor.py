@@ -24,15 +24,17 @@
 # EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import atexit
+import smbus
 from Adafruit_MotorHAT import Adafruit_MotorHAT
 
 # addr=0x60
 mh = Adafruit_MotorHAT(i2c_bus=1)
-
+bus = smbus.SMBus(1)
 
 class Motor:
 
     def __init__(self, channel_id, rpm, alpha=1.0, beta=0.0):
+        bus.write_byte_data(0x34, 0, 3)
         self.alpha = alpha
         self.beta = beta
         # load motor channel
