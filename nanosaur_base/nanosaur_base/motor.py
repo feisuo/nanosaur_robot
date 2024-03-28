@@ -28,7 +28,7 @@ import smbus
 from Adafruit_MotorHAT import Adafruit_MotorHAT
 
 # addr=0x60
-mh = Adafruit_MotorHAT(i2c_bus=1)
+mh = Adafruit_MotorHAT(addr=0x34, i2c_bus=1)
 bus = smbus.SMBus(1)
 
 class Motor:
